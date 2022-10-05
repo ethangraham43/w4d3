@@ -1,19 +1,13 @@
 require_relative "board.rb"
-require_relative "move_modules.rb"
 
-class Piece
+class Piece 
     def initialize(color,board,pos)
+        raise "Invalid color" if color != :black || color != :white
+        raise "Invalid position" if board.valid_pos?(pos)
         @color = color
         @board = board
         @pos = pos
-    end
-
-      def valid_moves(pos)
-        row, col = pos
-        if (row < 0 || row > 7) || (col < 0 || col > 7)
-            raise "Must be on the board" 
-            return false
-        end
+        
     end
 
     # to_s
@@ -25,12 +19,3 @@ class Piece
 end
 
 
-
-# class NullPiece < Piece
-
-#     def initialize(start_pos = nil)
-#         @start_pos = start_pos
-
-#     end
-
-# end

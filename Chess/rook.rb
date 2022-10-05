@@ -1,5 +1,5 @@
-require_relative 'piece'
-require_relative 'slideable'
+require_relative 'piece.rb'
+require_relative 'slideable.rb'
 
 class Rook < Piece
   include Slideable

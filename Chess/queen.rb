@@ -1,5 +1,5 @@
-require_relative 'piece'
-require_relative 'slideable'
+require_relative 'piece.rb'
+require_relative 'slideable.rb'
 
 class Queen < Piece
   include Slideable
@@ -19,7 +19,7 @@ class Queen < Piece
     
       (-7..7).each do |i|
         moves_arr << [x + i, y + i]
-        moves_arr << [-x + i, -y + i]
+        moves_arr << [x + i, y - i]
         moves_arr << [x + i, y]
         moves_arr << [x, y + i]
        end

@@ -2,17 +2,9 @@ require_relative "piece.rb"
 
 class Board
 
-    def initialize()
+    def initialize
         @rows = Array.new(8) {Array.new(8,nil)}
-        @piece = Piece.new()
-    end
-
-    def valid_moves(pos)
-        row, col = pos
-        if (row < 0 || row > 7) || (col < 0 || col > 7)
-            raise "Must be on the board" 
-            return false
-        end
+        @piece = :p
     end
 
     def [](pos)
@@ -25,8 +17,19 @@ class Board
         @rows[row][col] = value
     end
 
+    def valid_pos?(check_pos)
+        row, col = check_pos
+        if (row < 0 || row > 7) || (col < 0 || col > 7)
+            raise "Must be on the board" 
+            return false
+        else
+            return true
+        end
+    end
+
     def add_piece(pos)
-        if self[pos] == nil
+
+        if self[pos] == nil && self.valid_pos?(pos)
             self[pos] = @piece
             return true
         else
@@ -35,8 +38,10 @@ class Board
     end
 
     def move_piece(start_pos, end_pos)
-        self[start_pos] = nil
-        self[end_pos] = @piece
+        if self.valid_pos?(end_pos)
+            self[start_pos] = nil
+            self[end_pos] = @piece
+        end
     end
 
 end
