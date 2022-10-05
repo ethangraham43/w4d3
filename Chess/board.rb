@@ -7,6 +7,13 @@ class Board
         @piece = Piece.new()
     end
 
+    def valid_moves(pos)
+        row, col = pos
+        if (row < 0 || row > 7) || (col < 0 || col > 7)
+            raise "Must be on the board" 
+            return false
+        end
+    end
 
     def [](pos)
         row,col = pos

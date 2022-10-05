@@ -6,10 +6,10 @@ class Piece
 
     end
 
-    def valid_moves
-    end
+
 
     def moves
+
     end
 
 end
